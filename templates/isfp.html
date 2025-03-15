@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us</title>
+  <!-- Link to External CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='types.css') }}">
+</head>
+
+<body>
+<!-- Background Animation Div -->
+  <div class="bg4"></div>
+
+  <div id="header">
+    <div class="container">
+      <a href="{{ url_for('home') }}" class="home-button">Back to Home</a>
+    </div>
+  </div>
+  <div id="about">
+    <div class="d-flex flex-column justify-content-center w-100 h-100"></div>
+    <div class="container">
+      <div class="row">
+        <!-- About Image Section -->
+        <div class="about-col-1">
+          <img src="{{ url_for('static', filename='14 ISFP.png') }}" alt="About Us Image">
+        </div>
+        <!-- About Content Section -->
+        <div class="about-col-2">
+          <h1 class="sub-title-4">ISFP</h1>
+          <!-- Background Box Wrapper -->
+          <div class="background-box-4">
+              <h1>Introduction</h1><br>
+              <p>People with the ISFP personality type (Adventurers) are true artists – although not necessarily in the conventional sense. For these types, life itself is a canvas for self-expression. From what they wear to how they spend their free time, they act in ways that vividly reflect who they are as unique individuals. With their exploratory spirit and their ability to find joy in everyday life, ISFPs can be among the most interesting people you’ll ever meet.<br><br>Driven by their sense of fairness and their open-mindedness, people with this personality type move through life with an infectiously encouraging attitude. They love motivating those close to them to follow their passions and usually follow their own interests with the same unhindered enthusiasm. The only irony? Unassuming and humble, ISFPs tend to see themselves as “just doing their own thing,” so they may not even realize how remarkable they really are.</p><br>
+              <p>Click the link for more information about ISFP</p><br>
+              <a href="https://www.16personalities.com/isfp-personality" target="_blank" rel="noopener noreferrer">https://www.16personalities.com/isfp-personality</a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

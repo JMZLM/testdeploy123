@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us</title>
+  <!-- Link to External CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='types.css') }}">
+</head>
+
+<body>
+<!-- Background Animation Div -->
+  <div class="bg2"></div>
+
+  <div id="header">
+    <div class="container">
+      <a href="{{ url_for('home') }}" class="home-button">Back to Home</a>
+    </div>
+  </div>
+  <div id="about">
+    <div class="d-flex flex-column justify-content-center w-100 h-100"></div>
+    <div class="container">
+      <div class="row">
+        <!-- About Image Section -->
+        <div class="about-col-1">
+          <img src="{{ url_for('static', filename='5 INFJ.png') }}" alt="About Us Image">
+        </div>
+        <!-- About Content Section -->
+        <div class="about-col-2">
+          <h1 class="sub-title-2">INFJ</h1>
+          <!-- Background Box Wrapper -->
+          <div class="background-box-2">
+              <h1>Introduction</h1><br>
+              <p>As an INFJ (Advocate), you possess a unique combination of idealism and insight that sets you apart in today’s world. Your rich inner life is characterized by complex emotions, vivid imagination, and a deep well of empathy that allows you to connect with others on a profound level. You have an unwavering commitment to your principles and an intense desire to make a positive impact on the world around you.<br><br>Your natural ability to understand and interpret the feelings and motivations of others is both a gift and a challenge. While it enables you to form deep, meaningful connections and offer invaluable support to those around you, it can also leave you feeling overwhelmed by the emotions and needs of others. You often find yourself torn between your desire to help and your need for privacy and solitude. </p><br>
+              <br><p>Click the link for more information about INFJ</p>
+              <br><a href="https://www.16personalities.com/infj-personality" target="_blank" rel="noopener noreferrer">https://www.16personalities.com/infj-personality</a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

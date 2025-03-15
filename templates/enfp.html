@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us</title>
+  <!-- Link to External CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='types.css') }}">
+</head>
+
+<body>
+<!-- Background Animation Div -->
+  <div class="bg2"></div>
+
+  <div id="header">
+    <div class="container">
+      <a href="{{ url_for('home') }}" class="home-button">Back to Home</a>
+    </div>
+  </div>
+  <div id="about">
+    <div class="d-flex flex-column justify-content-center w-100 h-100"></div>
+    <div class="container">
+      <div class="row">
+        <!-- About Image Section -->
+        <div class="about-col-1">
+          <img src="{{ url_for('static', filename='8 ENFP.png') }}" alt="About Us Image">
+        </div>
+        <!-- About Content Section -->
+        <div class="about-col-2">
+          <h1 class="sub-title-2">ENFP</h1>
+          <!-- Background Box Wrapper -->
+          <div class="background-box-2">
+              <h1>Introduction</h1><br>
+              <p>People with the ENFP personality type (Campaigners) are true free spirits – outgoing, openhearted, and open-minded. With their lively, upbeat approach to life, ENFPs stand out in any crowd. But even though they can be the life of the party, they don’t just care about having a good time. These personalities have profound depths that are fueled by their intense desire for meaningful, emotional connections with others. </p><br>
+              <p>Click the link for more information about ENFP</p><br>
+              <a href="https://www.16personalities.com/enfp-personality" target="_blank" rel="noopener noreferrer">https://www.16personalities.com/enfp-personality</a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

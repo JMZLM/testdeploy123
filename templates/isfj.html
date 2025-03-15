@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us</title>
+  <!-- Link to External CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='types.css') }}">
+</head>
+
+<body>
+<!-- Background Animation Div -->
+  <div class="bg3"></div>
+
+  <div id="header">
+    <div class="container">
+      <a href="{{ url_for('home') }}" class="home-button">Back to Home</a>
+    </div>
+  </div>
+  <div id="about">
+    <div class="d-flex flex-column justify-content-center w-100 h-100"></div>
+    <div class="container">
+      <div class="row">
+        <!-- About Image Section -->
+        <div class="about-col-1">
+          <img src="{{ url_for('static', filename='10 ISFJ.png') }}" alt="About Us Image">
+        </div>
+        <!-- About Content Section -->
+        <div class="about-col-2">
+          <h1 class="sub-title-3">ISFJ</h1>
+          <!-- Background Box Wrapper -->
+          <div class="background-box-3">
+              <h1>Introduction</h1><br>
+              <p>In their unassuming, understated way, people with the ISFJ personality type (Defenders) help make the world go round. Hardworking and devoted, these personalities feel a deep sense of responsibility to those around them. ISFJs can be counted on to meet deadlines, remember birthdays and special occasions, uphold traditions, and shower their loved ones with gestures of care and support. But they rarely demand recognition for all that they do, preferring instead to operate behind the scenes.<br><br>This is a capable, can-do personality type with a wealth of versatile gifts. Though sensitive and caring, ISFJs also have excellent analytical abilities and an eye for detail. And despite their reserve, they tend to have well-developed people skills and robust social relationships. These personalities are truly more than the sum of their parts, and their varied strengths shine in even the most ordinary aspects of their daily lives.</p><br>
+              <p>Click the link for more information about ISFJ</p><br>
+              <a href="https://www.16personalities.com/isfj-personality" target="_blank" rel="noopener noreferrer">https://www.16personalities.com/isfj-personality</a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

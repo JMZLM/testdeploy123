@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us</title>
+  <!-- Link to External CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='types.css') }}">
+</head>
+
+<body>
+<!-- Background Animation Div -->
+  <div class="bg1"></div>
+
+  <div id="header">
+    <div class="container">
+      <a href="{{ url_for('home') }}" class="home-button">Back to Home</a>
+    </div>
+  </div>
+  <div id="about">
+    <div class="d-flex flex-column justify-content-center w-100 h-100"></div>
+    <div class="container">
+      <div class="row">
+        <!-- About Image Section -->
+        <div class="about-col-1">
+          <img src="{{ url_for('static', filename='4 ENTP.png') }}" alt="About Us Image">
+        </div>
+        <!-- About Content Section -->
+        <div class="about-col-2">
+          <h1 class="sub-title">ENTP</h1>
+          <!-- Background Box Wrapper -->
+          <div class="background-box">
+              <h1>Introduction</h1><br>
+              <p>Quick-witted and audacious, people with the ENTP personality type (Debaters) aren’t afraid to disagree with the status quo. In fact, they’re not afraid to disagree with pretty much anything or anyone. Few things light up these personalities more than a bit of verbal sparring – and if the conversation veers into controversial terrain, so much the better.<br><br>It would be a mistake, though, to think of ENTPs as disagreeable or mean-spirited. Instead, people with this personality type are knowledgeable and curious with a playful sense of humor, and they can be incredibly entertaining. They simply have an offbeat, contrarian idea of fun – one that usually involves a healthy dose of spirited debate.</p><br>
+              <p>Click the link for more information about ENTP</p>
+              <a href="https://www.16personalities.com/entp-personality" target="_blank" rel="noopener noreferrer">https://www.16personalities.com/entp-personality</a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

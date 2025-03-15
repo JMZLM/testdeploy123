@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MBTI Quiz</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='quiz-style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>MBTI Personality Quiz</h1>
+        <div id="question-container" class="question-container"></div>
+
+        <!-- Additional HTML -->
+        <div class="d-flex flex-column justify-content-center w-100 h-100">
+            <div class="d-flex flex-column justify-content-center align-items-center">
+                <!-- Add any desired content here -->
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='questions.js') }}"></script>
+</body>
+</html>

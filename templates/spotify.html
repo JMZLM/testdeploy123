@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feel My Rhythm</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='spotify-style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Feel My Rhythm</h1>
+    </header>
+    <main>
+        <section id="personality-display">
+            <h2>Your Personality</h2>
+            <p id="personality-type">{{ personality_type }}</p>
+            <p id="personality-description">{{ description }}</p>
+        </section>
+
+        <section id="emotion-display">
+            <h2>Current Mood</h2>
+            <p id="detected-emotion">No emotion detected yet</p>
+        </section>
+
+        <section id="detect-emotion">
+            <h2>Upload Your Photo</h2>
+            <form action="/upload_image" method="POST" enctype="multipart/form-data">
+                <label for="image-upload" class="file-upload-label">
+                    <i class="fas fa-camera"></i> Choose an image
+                </label>
+                <input id="image-upload" type="file" name="image" accept="image/*" required>
+                <button type="submit"><i class="fas fa-arrow-up"></i> Upload and Detect</button>
+            </form>
+        </section>
+
+        <section id="current-song" class="playing">
+            <div id="song-info-box">
+                <h2>Now Playing</h2>
+                <p id="song-details">No songs available. Detect your emotion to get started.</p>
+            </div>
+            <img id="album-cover" src="" alt="Album Cover" style="display: none;">
+
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+                <div class="time-stamps">
+                    <span class="current-time">0:00</span>
+                    <span class="total-time">0:00</span>
+                </div>
+            </div>
+
+            <div id="playback-controls">
+                <button onclick="control('previous')"><i class="fas fa-step-backward"></i></button>
+                <button id="play-pause-btn" onclick="control('playpause')"><i class="fas fa-play"></i></button>
+                <button onclick="control('next')"><i class="fas fa-step-forward"></i></button>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://sdk.scdn.co/spotify-player.js"></script>
+    <script>
+    // Map of emotions to background colors
+    const emotionImages = {
+    anger: "url('/static/anger.png')",
+    disgust: "url('/static/disgust.png')",
+    fear: "url('/static/fear.png')",
+    happy: "url('/static/happy.png')",
+    neutral: "url('/static/neutral.png')",
+    sad: "url('/static/sad.png')",
+    surprise: "url('/static/surprise.png')",
+    };
+
+    // Function to update the detected emotion and change background color
+    function updateDetectedEmotion() {
+    fetch('/get_detected_emotion')
+        .then(response => response.json())
+        .then(data => {
+            const emotionDisplay = document.getElementById('detected-emotion');
+            const detectedEmotion = data.detected_emotion || "neutral";
+
+            // Update the emotion text
+            emotionDisplay.innerText = detectedEmotion;
+
+            // Change the background image based on the detected emotion
+            const bgImage = emotionImages[detectedEmotion] || "url('/static/neutral.png')"; // Default image
+            document.body.style.backgroundImage = bgImage;
+        })
+        .catch(error => console.error('Error fetching detected emotion:', error));
+    }
+
+    // Update every 2 seconds
+    setInterval(updateDetectedEmotion, 2000);
+
+    // Add file name display when selecting a file
+    document.getElementById('image-upload').addEventListener('change', function() {
+        const fileName = this.files[0] ? this.files[0].name : 'Choose an image';
+        document.querySelector('.file-upload-label').textContent = fileName;
+    });
+
+    // Spotify Web Playback SDK setup
+    const accessToken = "{{ access_token }}";
+    let isNextTriggered = false;
+    let isPaused = true;
+    let player;
+    let currentTrackDuration = 0;
+    let progressInterval;
+
+    window.onSpotifyWebPlaybackSDKReady = () => {
+        player = new Spotify.Player({
+            name: 'Feel My Rhythm',
+            getOAuthToken: cb => { cb(accessToken); },
+            volume: 0.5,
+        });
+
+        player.addListener('player_state_changed', state => {
+            if (state) {
+                const currentTrack = state.track_window.current_track;
+                const songDetails = document.getElementById('song-details');
+                const albumCover = document.getElementById('album-cover');
+                const playPauseButton = document.getElementById('play-pause-btn').querySelector('i');
+                const currentTimeElement = document.querySelector('.current-time');
+                const totalTimeElement = document.querySelector('.total-time');
+                const progressElement = document.querySelector('.progress');
+
+                // Clear existing interval
+                if (progressInterval) clearInterval(progressInterval);
+
+                if (currentTrack) {
+                    songDetails.innerText = `${currentTrack.name} by ${currentTrack.artists[0].name}`;
+                    albumCover.src = currentTrack.album.images[0].url;
+                    albumCover.style.display = 'block';
+
+                    // Update time displays
+                    currentTrackDuration = state.duration;
+                    const minutes = Math.floor(currentTrackDuration / 60000);
+                    const seconds = Math.floor((currentTrackDuration % 60000) / 1000);
+                    totalTimeElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+                    // Start progress tracking
+                    progressInterval = setInterval(() => {
+                        player.getCurrentState().then(state => {
+                            if (state) {
+                                const position = state.position;
+                                const positionMinutes = Math.floor(position / 60000);
+                                const positionSeconds = Math.floor((position % 60000) / 1000);
+                                currentTimeElement.textContent = `${positionMinutes}:${positionSeconds < 10 ? '0' : ''}${positionSeconds}`;
+
+                                // Update progress bar
+                                const percentage = (position / currentTrackDuration) * 100;
+                                progressElement.style.width = `${percentage}%`;
+                            }
+                        });
+                    }, 1000);
+                }
+
+                // Update play/pause button
+                if (state.paused) {
+                    playPauseButton.className = 'fas fa-play';
+                    document.getElementById('current-song').classList.remove('playing');
+                    isPaused = true;
+                } else {
+                    playPauseButton.className = 'fas fa-pause';
+                    document.getElementById('current-song').classList.add('playing');
+                    isPaused = false;
+                }
+
+                // Auto play next song when current one ends
+                if (state.paused && state.position === 0 && !state.loading) {
+                    if (!isNextTriggered) {
+                        console.log("Song finished. Playing next song...");
+                        isNextTriggered = true;
+                        control('next');
+                    }
+                } else if (!state.paused) {
+                    isNextTriggered = false;
+                }
+            }
+        });
+
+        player.addListener('ready', ({ device_id }) => {
+            fetch(`https://api.spotify.com/v1/me/player`, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `Bearer ${accessToken}`,
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    device_ids: [device_id],
+                    play: false,
+                }),
+            });
+        });
+
+        player.connect();
+    };
+
+    // Progress bar click handler
+    document.querySelector('.progress-bar').addEventListener('click', function(e) {
+        const rect = this.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const width = rect.width;
+        const percentage = x / width;
+
+        if (currentTrackDuration) {
+            const position = Math.floor(percentage * currentTrackDuration);
+
+            fetch(`https://api.spotify.com/v1/me/player/seek?position_ms=${position}`, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `Bearer ${accessToken}`,
+                }
+            });
+        }
+    });
+
+    function control(action) {
+        const apiUrl = `/control/${action}`;
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                const songDetails = document.getElementById('song-details');
+                const albumCover = document.getElementById('album-cover');
+                const playPauseButton = document.getElementById('play-pause-btn').querySelector('i');
+
+                if (data.song) {
+                    songDetails.innerText = `${data.song.name} by ${data.song.artist}`;
+                    albumCover.src = data.song.cover_url;
+                    albumCover.style.display = 'block';
+                }
+
+                if (data.is_paused) {
+                    playPauseButton.className = 'fas fa-play';
+                    document.getElementById('current-song').classList.remove('playing');
+                } else {
+                    playPauseButton.className = 'fas fa-pause';
+                    document.getElementById('current-song').classList.add('playing');
+                }
+            })
+            .catch(error => console.error(`Error: ${error.message}`));
+    }
+    </script>
+</body>
+</html>

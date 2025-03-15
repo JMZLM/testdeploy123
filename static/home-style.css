@@ -1,0 +1,606 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+
+
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+    background: #45aef1; /*--COLOR BG BOTTOM--*/ #b0d9f5     #15919B #213A58  #0C6478  #179bef #46DFB1 #09D1C7
+    color: #000000;      /*--COLOR TEXT--*/
+}
+#header {
+    width: 100%;
+    height: 100vh;
+    background-image: url("{{ url_for('static', filename='background.png') }}");
+    background-size: cover;
+    background-position: center;
+}
+
+.container{
+
+    padding: 10px 10%;
+}
+
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.logo{
+    width: 140px;
+}
+
+nav ul li{
+    display: inline-block;
+    list-style: none;
+    margin: 10px 20px;
+}
+
+nav ul li a{
+    color: #000000;
+    text-decoration: none;
+    font-size: 18px;
+    position: relative;
+}
+
+nav ul li a::after{
+    content: '';
+    width: 0%;
+    height: 3px;
+    background: #7eb6f7; /*--COLOR HOVER--*/
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    transition: 0.5s;
+}
+
+nav ul li a:hover::after{
+    width: 100%;
+}
+
+.header-text{
+    margin-top: 20%;
+    font-size: 30px;
+
+}
+
+.header-text h1{
+    font-size: 60px;
+    margin-top: 20px;
+}
+
+.header-text h1 span{
+    color: #7eb6f7; /*--COLOR MBTI--*/
+
+}
+/*-----------------------------BUTTON START QUIZ-----------------------------*/
+
+.start-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 30px;
+    font-size: 18px;
+    color: white;
+    background-color: #007bff; /* Adjust the color as needed */
+    border: none;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.start-button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+
+/*-----------------------------about-----------------------------*/
+
+#about{
+    padding: 80px 0;
+    color: #ffffff;
+
+
+}
+.row{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.about-col-1{
+    flex-basis: 35%;
+}
+
+.about-col-1 img{
+    width: 100%;
+    border-radius: 15px;
+}
+
+.about-col-2{
+    flex-basis:60%;
+
+}
+
+.sub-title {
+    font-size: 60px;
+    color: #ffffff; /* Set text color to white */
+    text-align: left; /* Align text to the left */
+    margin-bottom: 2rem; /* Adjust the space below the heading */
+
+    /* Add an oblong background shape */
+    display: inline-block; /* Makes the background fit the text width */
+
+    /* Adjust padding for the height and width of the oblong */
+    padding: 10px 20px; /* padding-top/bottom = 30px (height), padding-left/right = 60px (width) */
+
+    background-color: rgba(0, 74, 173, 0.5); /* #134015 color with 90% opacity */
+    border-radius: 10px; /* Creates the oblong shape with rounded edges */
+}
+.background-box {
+    background-color: rgba(0, 74, 173, 0.5); /* Greenish background with transparency */
+    padding: 20px 30px; /* Adjust spacing inside the box */
+    border-radius: 15px; /* Rounded corners */
+    margin-top: 20px; /* Space between the title and the box */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Optional shadow for depth */
+    color: #ffffff; /* Ensure text inside remains white */
+}
+
+.background-box p {
+    margin-bottom: 20px; /* Space between the paragraph and tabs */
+    line-height: 1.6; /* Improve text readability */
+}
+
+
+.tab-titles{
+    display: flex;
+    margin: 20px 0 40px;
+    margin-top: 10px; /* Reduce the gap after the paragraph */
+}
+.tab-links{
+    margin-right: 50px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+}
+.tab-links::after{
+    content: '';
+    width: 0;
+    height: 3px;
+    background: #ff004f; /* hover underline ng surnames*/
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    transition: 0.5s;
+}
+
+.tab-links.active-link::after{
+    width: 50%;
+}
+
+.tab-contents ul li{
+    list-style: none;
+    margin: 10px 0;
+}
+.tab-contents ul li span{
+    color: #ff004f;                   /*color ng contents sa surnames*/
+    font-size: 14px;
+}
+.tab-contents{
+    display: none;
+}
+.tab-contents.active-tab{
+    display: block;
+}
+
+/*-----------------------------services-----------------------------*/
+/*#services{
+    padding: 30px 0;
+}
+
+.services-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 40px;
+    margin-top: 50px;
+
+}
+.services-list div{
+    background: #262626;
+    padding: 40px;
+    font-size: 13px;
+    font-weight: 300;
+    border-right: 10px;
+    transition: background 0.5s, transform 0.5s;
+}
+.services-list div i{
+    font-size: 50px;
+    margin-bottom: 30px;
+}
+.services-list div h2{
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+.services-list div a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 12px;
+    margin-top: 20px;
+    display: inline-block;
+}
+.services-list div:hover{
+    background: #ff004f;
+    transform: translateY(-10px);
+}
+/*-----------------------------portfolio-----------------------------*/
+/* Portfolio Section */
+
+.sub-title1 {
+    position: relative; /* Allows for pseudo-element positioning */
+    font-size: 60px; /* Set the font size */
+    font-weight: 600;
+    color: #ffffff; /* White text color */
+    text-align: center; /* Center the heading */
+    margin-bottom: 2rem; /* Space below the heading */
+}
+
+/* The oblong shape behind the text */
+.sub-title1::before {
+    content: ""; /* Create a pseudo-element for the oblong */
+    position: absolute;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Align the center */
+    width: 550px;
+    height: 100px;
+    /* Set the width and height of the oblong using relative units */
+
+
+    background-color: rgba(51, 51, 51, 0.8); /* Translucent background */
+    border-radius: 10px; /* Rounded edges for the oblong shape */
+    z-index: -1; /* Places it behind the text */
+}
+
+
+
+#portfolio {
+
+    position: relative;
+    padding: 50px 0;
+    overflow: hidden; /* Prevent background overflow */
+}
+
+/* Animated Background Layers */
+#portfolio .bg {
+    animation: slide 3s ease-in-out infinite alternate;
+    background-image: linear-gradient(-60deg, #6c3 50%, #09f 50%);
+    bottom: 0;
+    left: -50%;
+    opacity: 0.5;
+    position: absolute;
+    right: -50%;
+    top: 0;
+    z-index: -1; /* Ensure it sits behind the content */
+}
+
+#portfolio .bg2 {
+    animation-direction: alternate-reverse;
+    animation-duration: 4s;
+}
+
+#portfolio .bg3 {
+    animation-duration: 5s;
+}
+
+/* Keyframe for animation */
+@keyframes slide {
+    0% {
+        transform: translateX(-25%);
+    }
+    100% {
+        transform: translateX(25%);
+    }
+}
+
+/* Portfolio Content Styles (Existing Styles) */
+#portfolio .container {
+    position: relative; /* Content sits above the background */
+    z-index: 1;
+}
+.work-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 40px;
+    margin-top: 50px;
+}
+.work{
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+.work img{
+    width: 100%;
+    border-radius: 10px;
+    display: block;
+    transition: transform 0.5s;
+}
+.work-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+.work {
+    position: relative;
+    /* other styling */
+}
+
+.layer{
+    width: 100%;
+    height: 0%;
+    background: linear-gradient(rgba(0,0,0,0.6), #033352); #ff004f  #1c608b #033352
+    border-radius: 10px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    text-align: center;
+    font-size: 14px;
+    transition: height 0.5s;
+}
+.layer h3 {
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #ffffff;
+    background-color: rgba(16, 133, 255, 0.2); /* Light background color for visibility */
+    padding: 10px 30px; /* Adjust padding for oblong shape */
+    border-radius: 25px; /* Makes the shape oblong */
+    display: inline-block; /* Ensures the h3 only takes up as much space as needed */
+    border: 2px solid #ffffff; /* Optional border for emphasis */
+    text-align: center;
+}
+
+
+
+.layer p{
+    color: #ffffff;
+}
+
+
+.layer a{
+    margin-top: 20px;
+    color: #ff004f;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 60px;
+    background: #fff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.work:hover img{
+    transform: scale(1.1);
+}
+.work:hover .layer{
+    height: 100%;
+}
+.btn{
+    display: block;
+    margin: 50px auto;
+    width: fit-content;
+    border: 1px solid #2c8f30;
+    padding: 14px 50px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #fff;
+    transition: background 0.5s;
+}
+.btn:hover{
+    background: #2c8f30;
+
+}
+
+
+/*-----------------------------contact-----------------------------*/
+#contact{
+   background: #57ad5b; #333333 #45aef1 #1A237E #388E3C
+
+}
+.contact-left{
+
+    flex-basis: 35%;
+}
+.contact-right{
+    flex-basis: 60%;
+}
+.contact-left p{
+    margin-top: 30px;
+}
+.contact-left p i{
+    color: #044407;    #ff004f  #213A58 #46DFB1 #09D1C7 #80EE98
+    margin-right: 15px;
+    font-size: 25px;
+}
+
+
+
+.sub-title2 {
+    font-size: 50px;
+    color: #ffffff; /* Set text color to white */
+    text-align: left; /* Align text to the left */
+    margin-bottom: 2rem; /* Adjust the space below the heading */
+
+    /* Add an oblong background shape */
+    display: inline-block; /* Makes the background fit the text width */
+
+    /* Adjust padding for the height and width of the oblong */
+    padding: 10px 20px; /* padding-top/bottom = 30px (height), padding-left/right = 60px (width) */
+
+    background-color: rgba(19, 64, 21, 0.9); /* #134015 color with 90% opacity */
+    border-radius: 10px; /* Creates the oblong shape with rounded edges */
+}
+
+
+
+
+.social-icons{
+    margin-top: 30px;
+}
+
+.social-icons a{
+    text-decoration: none;
+    font-size: 30px;
+    margin-right: 15px;
+    color: #ffffff;                            /*c color of icons ig twitter etc*/
+    display: inline-block;
+    transition: transform 0.5s;
+}
+.social-icons a:hover{
+    color: #134015;
+    transform: translateY(-5px);
+}
+.btn.btn2{
+    display: inline-block;
+    background: #134015;
+}
+.contact-right form{
+    width: 100%;
+}
+form input, form textarea{
+    width: 100%;
+    border: 0;
+    outline: none;
+    background: #134015;
+    padding: 15px;
+    margin: 15px 0;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 6px;
+}
+form .btn2{
+    padding: 14px 60px;
+    font-size: 18px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.copyright{
+    width: 100%;
+    text-align: center;
+    padding: 25px 0;
+    background: #ffffff;
+    font-weight: 300;
+    margin-top: 20px;
+}
+
+.copyright i{
+    color:#ff004f
+}
+/*-----------------------------css for small screen-----------------------------*/
+nav .fa-solid{
+    display: none;
+}
+@media only screen and (max-width: 600px){
+    #header{
+        background-image: url("{{ url_for('static', filename='phone-background.png') }}");
+    }
+    .header-text{
+        margin-top: 95%;
+        font-size: 16px;
+    }
+    .header-text h1{
+        font-size: 30px;
+    }
+    nav .fa-solid{
+        display: block;
+        font-size: 25px;
+    }
+    nav ul{
+        background: #38b6ff;
+        position: fixed;
+        top: 0;
+        right: -200px;
+        width: 200px;
+        height: 100vh;
+        padding-top: 50px;
+        z-index: 2;
+        transition: right 0.5s;
+    }
+    nav ul li{
+        display: block;
+        margin: 25px;
+    }
+    nav ul .fa-solid{
+        position: absolute;
+        top: 25px;
+        left: 25px;
+        cursor: pointer;
+    }
+    .sub-title{
+        font-size: 40px;
+    }
+    .about-col-1, .about-col-2{
+        flex-basis: 100%;
+    }
+    .about-col-1{
+        margin-bottom: 30px;
+    }
+    .about-col-2{
+        font-size: 14px;
+    }
+    .tab-links{
+        font-size: 16px;
+        margin-right: 20px;
+    }
+    .contact-left, .contact-right{
+        flex-basis: 100%;
+    }
+    .copyright{
+        font-size: 14px;
+    }
+}
+#msg{
+    color: #ffffff;
+    margin-top: -10px;
+    display: block;
+}
+
+
+
+
+
+/* Optional: Adjust the size of the oblong on smaller screens */
+@media (max-width: 768px) {
+    .sub-title1 {
+        font-size: 40px; /* Smaller font size on mobile */
+    }
+    .sub-title1::before {
+        width: 80vw; /* Make the oblong shape wider on smaller screens */
+        height: 10vh; /* Adjust the height */
+    }
+}
+
+@media (max-width: 480px) {
+    .sub-title1 {
+        font-size: 30px; /* Further decrease font size for very small screens */
+    }
+    .sub-title1::before {
+        width: 90vw; /* Make the oblong even wider on very small screens */
+        height: 8vh; /* Adjust the height again */
+    }
+}

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MBTI Quiz Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='quiz-style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Your MBTI Personality Result</h1>
+        <h2>Your Type: {{ personality_type }}</h2>
+        <p>{{ description }}</p>
+        <a href="{{ url_for('home') }}" class="submit-button">Take the Quiz Again</a>
+        <a href ="{{ url_for('reset_spotify') }} " class=submit-button>Playlist</a>
+    </div>
+</body>
+</html>

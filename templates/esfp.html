@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us</title>
+  <!-- Link to External CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='types.css') }}">
+</head>
+
+<body>
+<!-- Background Animation Div -->
+  <div class="bg4"></div>
+
+  <div id="header">
+    <div class="container">
+      <a href="{{ url_for('home') }}" class="home-button">Back to Home</a>
+    </div>
+  </div>
+  <div id="about">
+    <div class="d-flex flex-column justify-content-center w-100 h-100"></div>
+    <div class="container">
+      <div class="row">
+        <!-- About Image Section -->
+        <div class="about-col-1">
+          <img src="{{ url_for('static', filename='16 ESFP.png') }}" alt="About Us Image">
+        </div>
+        <!-- About Content Section -->
+        <div class="about-col-2">
+          <h1 class="sub-title-4">ESFP</h1>
+          <!-- Background Box Wrapper -->
+          <div class="background-box-4">
+              <h1>Introduction</h1><br>
+              <p>ESFP personalities are inclined toward putting on a show for others and generally appear to be very comfortable in the spotlight. However, it is not their love for being the center of attention that drives this sense of confidence but their knack for sensing what’s appropriate in certain situations. They have an uncanny ability to mirror the behaviors of those around them.<br><br>ESFPs truly enjoy the simplest things, and there’s no greater joy for them than just having fun with a good group of friends. People with this personality type would almost always choose to be with friends over spending time alone. With their unique and earthy wit, they love soaking up attention and making every get-together feel a bit like a party.</p><br>
+              <p>Click the link for more information about ESFP</p><br>
+              <a href="https://www.16personalities.com/esfp-personality" target="_blank" rel="noopener noreferrer">https://www.16personalities.com/esfp-personality</a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

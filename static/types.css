@@ -1,0 +1,399 @@
+/* Reset Default Styles */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+/* Global Styles */
+body {
+    color: #000000;
+    position: relative;
+    overflow-x: hidden;
+}
+/* FIRST 4* - PURPLE */
+/* Animated Background Layers */
+.bg1::before,
+.bg1::after,
+.bg1 .layer {
+    content: '';
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: -50%;
+    right: -50%;
+    opacity: 0.5;
+    z-index: -1;
+    animation: slide1 3s ease-in-out infinite alternate;
+    background-image: linear-gradient(-60deg, #9C27B0 50%, #673AB7 50%);
+}
+
+.bg1::after {
+    animation-direction: alternate-reverse;
+    animation-duration: 4s;
+    background-image: linear-gradient(-60deg, #7B1FA2 50%, #512DA8 50%);
+}
+
+.bg1 .layer {
+    animation-duration: 5s;
+    background-image: linear-gradient(-60deg, #6A1B9A 50%, #4527A0 50%);
+}
+
+/* SECOND 4* - GREEN */
+/* Animated Background Layers */
+.bg2::before,
+.bg2::after,
+.bg2 .layer {
+    content: '';
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: -50%;
+    right: -50%;
+    opacity: 0.5;
+    z-index: -1;
+    animation: slide2 3s ease-in-out infinite alternate;
+    background-image: linear-gradient(-60deg, #4CAF50 50%, #2E7D32 50%);
+}
+
+.bg2::after {
+    animation-direction: alternate-reverse;
+    animation-duration: 4s;
+    background-image: linear-gradient(-60deg, #388E3C 50%, #1B5E20 50%);
+}
+
+.bg2 .layer {
+    animation-duration: 5s;
+    background-image: linear-gradient(-60deg, #43A047 50%, #2E7D32 50%);
+}
+
+
+/* THIRD 4* - BLUE */
+/* Animated Background Layers */
+.bg3::before,
+.bg3::after,
+.bg3 .layer {
+    content: '';
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: -50%;
+    right: -50%;
+    opacity: 0.5;
+    z-index: -1;
+    animation: slide3 3s ease-in-out infinite alternate;
+    background-image: linear-gradient(-60deg, #2196F3 50%, #1565C0 50%);
+}
+
+.bg3::after {
+    animation-direction: alternate-reverse;
+    animation-duration: 4s;
+    background-image: linear-gradient(-60deg, #1E88E5 50%, #0D47A1 50%);
+}
+
+.bg3 .layer {
+    animation-duration: 5s;
+    background-image: linear-gradient(-60deg, #42A5F5 50%, #1976D2 50%);
+}
+
+
+/* THIRD 4* - YELLOW */
+/* Animated Background Layers */
+.bg4::before,
+.bg4::after,
+.bg4 .layer {
+    content: '';
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: -50%;
+    right: -50%;
+    opacity: 0.5;
+    z-index: -1;
+    animation: slide4 3s ease-in-out infinite alternate;
+    background-image: linear-gradient(-60deg, #FFEB3B 50%, #FBC02D 50%);
+}
+
+.bg4::after {
+    animation-direction: alternate-reverse;
+    animation-duration: 4s;
+    background-image: linear-gradient(-60deg, #FDD835 50%, #F9A825 50%);
+}
+
+.bg4 .layer {
+    animation-duration: 5s;
+    background-image: linear-gradient(-60deg, #FFF176 50%, #FBC02D 50%);
+}
+
+
+
+/* Background Animation */
+@keyframes slide1 {
+    0% {
+        transform: translateX(-25%);
+    }
+    100% {
+        transform: translateX(25%);
+    }
+}
+
+@keyframes slide2 {
+    0% {
+        transform: translateX(-25%);
+    }
+    100% {
+        transform: translateX(25%);
+    }
+}
+
+@keyframes slide3 {
+    0% {
+        transform: translateX(-25%);
+    }
+    100% {
+        transform: translateX(25%);
+    }
+}
+
+@keyframes slide4 {
+    0% {
+        transform: translateX(-25%);
+    }
+    100% {
+        transform: translateX(25%);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Container Styling */
+.container {
+    padding: 10px 10%;
+    position: relative;
+}
+
+/* Home Button Styles */
+.home-button {
+    display: inline-block;
+    padding: 12px 28px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 500;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.home-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.home-button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* About Section */
+#about {
+    padding: 80px 0;
+    color: #ffffff;
+    position: relative;
+}
+
+/* Flexbox Layout for Content Rows */
+.row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+/* Navigation Menu */
+nav ul li {
+    display: inline-block;
+    list-style: none;
+    margin: 10px 20px;
+}
+
+nav ul li a {
+    color: #000000;
+    text-decoration: none;
+    font-size: 18px;
+    position: relative;
+}
+
+/* Underline Effect for Navigation Links */
+nav ul li a::after {
+    content: '';
+    width: 0%;
+    height: 3px;
+    background: #9C27B0;
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    transition: 0.5s;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+/* About Section Columns */
+.about-col-1 {
+    flex-basis: 35%;
+}
+
+.about-col-1 img {
+    width: 100%;
+    border-radius: 15px;
+}
+
+.about-col-2 {
+    flex-basis: 60%;
+}
+
+/* Sub-title Styling FOR PURPLE GROUP*/
+.sub-title {
+    font-size: 60px;
+    color: #ffffff;
+    text-align: left;
+    margin-bottom: 2rem;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgba(106, 27, 154, 0.8);
+    border-radius: 10px;
+}
+
+/* Sub-title Styling FOR GREEN GROUP*/
+.sub-title-2 {
+    font-size: 60px;
+    color: #ffffff;
+    text-align: left;
+    margin-bottom: 2rem;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgba(17, 61, 20, 0.8);
+    border-radius: 10px;
+}
+
+/* Sub-title Styling FOR BLUE GROUP*/
+.sub-title-3 {
+    font-size: 60px;
+    color: #ffffff;
+    text-align: left;
+    margin-bottom: 2rem;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgba(18, 63, 89, 0.8);
+    border-radius: 10px;
+}
+
+/* Sub-title Styling FOR YELLOW GROUP*/
+.sub-title-4 {
+    font-size: 60px;
+    color: #ffffff;
+    text-align: left;
+    margin-bottom: 2rem;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgba(198, 187, 90, 0.8);
+    border-radius: 10px;
+}
+
+
+/* Background Box Styling FOR PURPLE GROUP*/
+.background-box {
+    background-color: rgba(106, 27, 154, 0.8);
+    padding: 20px 30px;
+    border-radius: 15px;
+    margin-top: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    color: #ffffff;
+}
+
+/* Background Box Styling FOR GREEN GROUP*/
+.background-box-2 {
+    background-color: rgba(17, 61, 20, 0.8);
+    padding: 20px 30px;
+    border-radius: 15px;
+    margin-top: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    color: #ffffff;
+}
+
+/* Background Box Styling FOR BLUE GROUP*/
+.background-box-3 {
+    background-color: rgba(18, 63, 89, 0.8);
+    padding: 20px 30px;
+    border-radius: 15px;
+    margin-top: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    color: #ffffff;
+}
+
+/* Background Box Styling FOR YELLOW GROUP*/
+.background-box-4 {
+    background-color: rgba(198, 187, 90, 0.8);
+    padding: 20px 30px;
+    border-radius: 15px;
+    margin-top: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    color: #ffffff;
+}
+
+.background-box p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+/* White Text for Links */
+a {
+    color: white;
+
+}
+
+/* Responsive Design - Mobile View */
+@media only screen and (max-width: 600px) {
+    .sub-title {
+        font-size: 40px;
+    }
+    .about-col-1,
+    .about-col-2 {
+        flex-basis: 100%;
+    }
+    .about-col-1 {
+        margin-bottom: 30px;
+    }
+    .about-col-2 {
+        font-size: 14px;
+    }
+    .home-button {
+        padding: 10px 24px;
+        font-size: 14px;
+    }
+}
